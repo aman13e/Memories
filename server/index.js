@@ -29,7 +29,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => app.listen(PORT, () => console.log(`server running on port: ${PORT}`)))
+  .then(() =>
+    app.listen(PORT, () => console.log(`server running on port: ${PORT}`))
+  )
   .catch((error) => console.log(`${error} did not connect`));
-
-// https://www.mongodb.com/cloud/atlas

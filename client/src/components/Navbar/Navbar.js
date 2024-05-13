@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
 
-import { AppBar, Avatar, Typography, Toolbar, Button } from "@material-ui/core";
+import { AppBar, Avatar, Typography,  Button } from "@material-ui/core";
 
 import useStyles from "./styles";
 import memoriesLogo from "../../images/memories-Logo.png";
