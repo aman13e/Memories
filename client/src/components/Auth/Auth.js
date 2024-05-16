@@ -4,14 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { signin, signup } from "../../actions/auth";
-import {
-  Avatar,
-  Button,
-  Paper,
-  Grid,
-  Typography,
-  Container,
-} from "@material-ui/core";
+import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
 import Input from "./Input";
@@ -33,8 +26,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleShowPassword = () =>
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+  const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,16 +51,8 @@ const Auth = () => {
   const googleSuccess = async (res) => {
     const token = res?.credential;
     const decoded = jwt_decode(res?.credential);
-
     // console.log(result); // ? -> helps in not giving error if the obj does not exist
-    const {
-      email,
-      family_name,
-      given_name,
-      name,
-      sub: googleId,
-      picture,
-    } = decoded;
+    const { email, family_name, given_name, name, sub: googleId, picture } = decoded;
     const result = { email, family_name, given_name, name, googleId, picture };
 
     try {
@@ -103,27 +87,11 @@ const Auth = () => {
           <Grid container spacing={2}>
             {isSignup && (
               <>
-                <Input
-                  name="firstName"
-                  label="First Name"
-                  handleChange={handleChange}
-                  autoFocus
-                  half
-                />
-                <Input
-                  name="lastName"
-                  label="Last Name"
-                  handleChange={handleChange}
-                  half
-                />
+                <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
+                <Input name="lastName" label="Last Name" handleChange={handleChange} half />
               </>
             )}
-            <Input
-              name="email"
-              label="Email Address"
-              handleChange={handleChange}
-              type="email"
-            />
+            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
             <Input
               name="password"
               label="Password"
@@ -131,39 +99,17 @@ const Auth = () => {
               type={showPassword ? "text" : "password"}
               handleShowPassword={handleShowPassword}
             />
-            {isSignup && (
-              <Input
-                name="confirmPassword"
-                label="Repeat Password"
-                handleChange={handleChange}
-                type="password"
-              />
-            )}
+            {isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />}
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
+          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
-          <Button
-            className={classes.googleButton}
-            id="googleSignIn"
-            fullWidth
-            variant="text"
-          >
+          <Button className={classes.googleButton} id="googleSignIn" fullWidth variant="text">
             Google Sign In
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Button onClick={switchMode}>
-                {isSignup
-                  ? "Already have an account? Sign in"
-                  : "Don't have an account? Sign Up"}
-              </Button>
+              <Button onClick={switchMode}>{isSignup ? "Already have an account? Sign in" : "Don't have an account? Sign Up"}</Button>
             </Grid>
           </Grid>
         </form>
